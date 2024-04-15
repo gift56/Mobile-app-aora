@@ -16,7 +16,7 @@ const SignIn = () => {
         <View className="w-full justify-center h-full px-4 my-6">
           <Image
             source={images.logo}
-            resizeMethod="contain"
+            resizeMode="contain"
             className="w-[115px] h-[35px]"
           />
           <Text className="text-2xl text-white font-psemibold mt-10">
@@ -28,12 +28,14 @@ const SignIn = () => {
             handleChangeText={(e) => setForm({ ...form, email: e })}
             otherStyles="mt-7"
             keyboardType="email-address"
+            placeholder="Email Address"
           />
           <FormField
             title="Password"
             value={form.password}
             handleChangeText={(e) => setForm({ ...form, password: e })}
             otherStyles="mt-7"
+            placeholder="Password"
           />
         </View>
       </ScrollView>
