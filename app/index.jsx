@@ -34,7 +34,11 @@ export default function App() {
             Where creativity meets innovation: embark on a journey of limitless
             exploration with Aora
           </Text>
-          <CustomButton />
+          <CustomButton
+            title="Continue with Email"
+            handlePress={() => {}}
+            containerStyles="w-full mt-7"
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

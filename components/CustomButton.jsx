@@ -1,12 +1,26 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { Text, TouchableOpacity } from "react-native";
 
-const CustomButton = () => {
+const CustomButton = ({
+  title,
+  handlePress,
+  containerStyles,
+  textStyles,
+  isLoading,
+}) => {
   return (
-    <View>
-      <Text>CustomButton</Text>
-    </View>
-  )
-}
+    <TouchableOpacity
+      onPress={handlePress}
+      activeOpacity={0.7}
+      className={`bg-secondary rounded-xl min-h-[62px] justify-center items-center ${containerStyles} ${
+        isLoading ? "opacity-50 cursor-not-allowed" : ""
+      }`}
+      disabled={isLoading}
+    >
+      <Text className={`text-primary font-psemibold text-lg ${textStyles}`}>
+        {title}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
-export default CustomButton
+export default CustomButton;
