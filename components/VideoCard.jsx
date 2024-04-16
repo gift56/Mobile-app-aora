@@ -40,7 +40,7 @@ const VideoCard = ({ title, creator, avatar, thumbnail, video }) => {
         </View>
       </View>
 
-      {/* {play ? (
+      {play ? (
         <Video
           source={{ uri: video }}
           className="w-full h-60 rounded-xl mt-3"
@@ -71,7 +71,7 @@ const VideoCard = ({ title, creator, avatar, thumbnail, video }) => {
             resizeMode="contain"
           />
         </TouchableOpacity>
-      )} */}
+      )}
     </View>
   );
 };
