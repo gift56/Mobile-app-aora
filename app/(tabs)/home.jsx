@@ -2,12 +2,14 @@ import { View, Text, FlatList, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 import SearchInput from "../../components/SearchInput";
+import Trending from "../../components/Trending";
+import EmptyData from "../../components/EmptyData";
 
 const Home = () => {
   return (
     <SafeAreaView className="bg-primary">
       <FlatList
-        data={[{ id: 1 }, { id: 2 }, { id: 3 }]}
+        data={[]}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <Text className="text-white">{item.id}</Text>}
         ListHeaderComponent={() => (
@@ -32,8 +34,15 @@ const Home = () => {
               <Text className="text-gray-100 text-lg font-pregular mb-3">
                 Trending Videos
               </Text>
+              <Trending posts={[{ id: 10 }, { id: 20 }] ?? []} />
             </View>
           </View>
+        )}
+        ListEmptyComponent={() => (
+          <EmptyData
+            title="No Videos Found"
+            subtitle="Be the first to upload a video"
+          />
         )}
       ></FlatList>
     </SafeAreaView>
