@@ -1,15 +1,23 @@
-import { View, Text, FlatList, Image } from "react-native";
+import { View, Text, FlatList, Image, RefreshControl } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 import SearchInput from "../../components/SearchInput";
 import Trending from "../../components/Trending";
 import EmptyData from "../../components/EmptyData";
+import { useState } from "react";
 
 const Home = () => {
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    // await refetch();
+    setRefreshing(false);
+  };
   return (
     <SafeAreaView className="bg-primary">
       <FlatList
-        data={[]}
+        data={[{ id: 1 }]}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <Text className="text-white">{item.id}</Text>}
         ListHeaderComponent={() => (
@@ -44,6 +52,9 @@ const Home = () => {
             subtitle="Be the first to upload a video"
           />
         )}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       ></FlatList>
     </SafeAreaView>
   );
