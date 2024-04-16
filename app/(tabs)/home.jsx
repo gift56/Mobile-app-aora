@@ -1,13 +1,26 @@
-import { View, Text, FlatList, Image, RefreshControl } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  RefreshControl,
+  Alert,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 import SearchInput from "../../components/SearchInput";
 import Trending from "../../components/Trending";
 import EmptyData from "../../components/EmptyData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAllPost } from "../../lib/appwrite";
+import useAppwrite from "../../lib/useAppwrite";
 
 const Home = () => {
+  const { data: posts } = useAppwrite(getAllPost);
+
   const [refreshing, setRefreshing] = useState(false);
+
+  console.log(posts);
 
   const onRefresh = async () => {
     setRefreshing(true);
