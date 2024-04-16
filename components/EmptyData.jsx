@@ -6,7 +6,7 @@ import CustomButton from "./CustomButton";
 
 const EmptyData = ({ title, subtitle }) => {
   return (
-    <View className="flex justify-center items-center px-4">
+    <View className="justify-center items-center px-4">
       <Image
         source={images.empty}
         resizeMode="contain"
