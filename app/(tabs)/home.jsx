@@ -5,12 +5,13 @@ import SearchInput from "../../components/SearchInput";
 import Trending from "../../components/Trending";
 import EmptyData from "../../components/EmptyData";
 import { useState } from "react";
-import { getAllPost } from "../../lib/appwrite";
+import { getAllPost, getLatestPosts } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
 import VideoCard from "../../components/VideoCard";
 
 const Home = () => {
   const { data: posts, refetch } = useAppwrite(getAllPost);
+  const { data: latestPosts } = useAppwrite(getLatestPosts);
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -56,7 +57,7 @@ const Home = () => {
               <Text className="text-gray-100 text-lg font-pregular mb-3">
                 Trending Videos
               </Text>
-              <Trending posts={[{ id: 10 }, { id: 20 }] ?? []} />
+              <Trending posts={latestPosts ?? []} />
             </View>
           </View>
         )}
